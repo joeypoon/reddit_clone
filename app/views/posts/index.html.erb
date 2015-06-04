@@ -11,7 +11,8 @@
     <% end %>
   </div>
 
-  <h3><%= post.title %> - Upvotes:<%= post.votes %></h3>
+  <h3><%= link_to post.title, post %> - Upvotes: <%= post.votes %></h3>
+  <h5><%= link_to post.user.name, user_path(id: post.user.id) %></h5>
 
   <p><%= truncate_post post.content %></p>
 

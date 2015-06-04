@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/posts/new' => 'posts#new', as: :new_post
 
-  get '/posts/:id' => 'posts#show', as: :post
+  get '/posts/:id/:title' => 'posts#show', as: :post
 
   # post '/posts/:id' => 'posts#upvote'
 
@@ -13,6 +13,16 @@ Rails.application.routes.draw do
   post 'posts/:id/down-vote' => 'posts#down_vote', as: :down_vote
 
   post '/posts' => 'posts#create'
+
+  delete '/posts/:id/:title' => 'posts#delete'
+
+  get '/users/new' => 'users#new', as: :new_user
+
+  get '/users/:id' => 'users#show', as: :user
+
+  post '/users' => 'users#create'
+
+  delete '/users/:id' => 'users#delete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

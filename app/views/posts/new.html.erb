@@ -1,2 +1,22 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>New Post</h1>
+
+<% if @post.errors.any? %>
+
+  <ul>
+  <% @post.errors.full_messages.each do |msg| %>
+
+    <li><%= msg %></li>
+
+  <% end %>
+  </ul>
+
+<% end %>
+
+<%= form_for @post do |f| %>
+
+  <%= f.text_field :title, placeholder: 'Title' %>
+  <%= f.text_field :content, placeholder: 'Content' %>
+  <%= f.collection_select :user_id, User.all, :id, :name, class: "form-control", prompt: true %>
+  <%= f.submit %>
+
+<% end %>

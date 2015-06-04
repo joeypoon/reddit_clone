@@ -2,8 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.container-fluid {
+  padding: 0;
+}
+
 .up-down-arrow {
   margin-top: 1em;
   margin-right: .3em;
   float: left;
+}
+
+nav {
+  height: 3em;
+
+  .list-inline {
+    margin-top: .6em;
+  }
 }
