@@ -1,9 +1,15 @@
 <h1>Reddit</h1>
 <% @posts.sort_by(&:votes).reverse.each do |post| %>
 
-  <%= link_to(post, class: 'up-arrow', method: 'post') do %>
-    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-  <% end %>
+  <div class="up-down-arrow">
+    <%= link_to(up_vote_path(id: post.id), class: 'up-arrow', method: 'post') do %>
+      <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+    <% end %>
+
+    <%= link_to(down_vote_path(id: post.id), class: 'down-arrow', method: 'post') do %>
+      <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+    <% end %>
+  </div>
 
   <h3><%= post.title %> - Upvotes:<%= post.votes %></h3>
 

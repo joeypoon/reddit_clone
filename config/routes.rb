@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   get '/posts/:id' => 'posts#show', as: :post
 
-  post '/posts/:id' => 'posts#upvote'
+  # post '/posts/:id' => 'posts#upvote'
+
+  post 'posts/:id/up-vote' => 'posts#up_vote', as: :up_vote
+
+  post 'posts/:id/down-vote' => 'posts#down_vote', as: :down_vote
 
   post '/posts' => 'posts#create'
 

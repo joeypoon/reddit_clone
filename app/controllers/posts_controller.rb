@@ -21,9 +21,18 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def upvote
+  def up_vote
     @post = Post.find params[:id]
     @post.votes += 1
+
+    if @post.save
+      redirect_to root_path
+    end
+  end
+
+  def down_vote
+    @post = Post.find params[:id]
+    @post.votes -= 1
 
     if @post.save
       redirect_to root_path
