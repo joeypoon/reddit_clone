@@ -1,2 +1,12 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1>Reddit</h1>
+<% @posts.sort_by(&:votes).reverse.each do |post| %>
+
+  <%= link_to(post, class: 'up-arrow', method: 'post') do %>
+    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+  <% end %>
+
+  <h3><%= post.title %> - Upvotes:<%= post.votes %></h3>
+
+  <p><%= truncate_post post.content %></p>
+
+<% end %>
