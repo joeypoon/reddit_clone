@@ -1,27 +1,30 @@
-<div class="col-md-6 col-md-offset-3">
+<h1 class="text-center">New Post</h1>
 
-  <h1 class="text-center">New Post</h1>
+<div class="row">
 
-  <% if @post.errors.any? %>
+  <div class="col-md-6 col-md-offset-3">
 
-    <ul>
-    <% @post.errors.full_messages.each do |msg| %>
+    <% if @post.errors.any? %>
 
-      <li><%= msg %></li>
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+
+        <li><%= msg %></li>
+
+      <% end %>
+      </ul>
 
     <% end %>
-    </ul>
 
-  <% end %>
+    <%= form_for @post do |f| %>
 
-  <%= form_for @post do |f| %>
+      <%= f.text_field :title, placeholder: 'Title', class: "form-control form-group" %>
+      <%= f.text_area :content, placeholder: 'Content', class: "form-control form-group" %>
+      <!-- <%= f.collection_select :user_id, User.all, :id, :name, prompt: true %> -->
+      <%= f.submit 'Post', :class => 'btn btn-success form-control' %>
 
-    <%= f.text_field :title, placeholder: 'Title', class: "form-control form-group" %>
-    <%= f.text_area :content, placeholder: 'Content', class: "form-control form-group" %>
-    <%= f.collection_select :user_id, User.all, :id, :name, prompt: true %>
-    <br>
-    <%= f.submit 'Post', :class => 'btn btn-success col-md-4 col-md-offset-4' %>
+    <% end %>
 
-  <% end %>
+  </div>
 
 </div>
