@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new post_params
+    @post.user = User.find session[:user_id]
 
     if @post.save
       redirect_to post_path(id: @post.id, title: @post.title)
@@ -27,9 +28,18 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post = Post.find params[:id]
+    @post.title = post_params[:title]
+    @post.content = post_params[:content]
+    if @post.save
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def edit
+    @post = Post.find params[:id]
   end
 
   def index
@@ -57,6 +67,6 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:title, :content, :user_id)
+      params.require(:post).permit(:title, :content)
     end
 end

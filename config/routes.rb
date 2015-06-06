@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   get '/posts/new' => 'posts#new', as: :new_post
 
+  get '/posts/:id/edit' => 'posts#edit', as: :edit_post
+
   get '/posts/:id/:title' => 'posts#show', as: :post
+
+  patch '/posts/:id/:title' => 'posts#update', as: :update_post
 
   post 'posts/:id/up-vote' => 'posts#up_vote', as: :up_vote
 
