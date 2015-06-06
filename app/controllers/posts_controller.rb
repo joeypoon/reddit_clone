@@ -5,12 +5,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find params[:id]
-    @user = User.find @post.user_id
+    @user = @post.user
   end
 
   def create
     @post = Post.new post_params
-    @post.votes = 0
 
     if @post.save
       redirect_to post_path(id: @post.id, title: @post.title)

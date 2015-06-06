@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-joey = User.create(name: 'Joey F. Poon', email: 'poonjf@gmail.com')
-dummy_person = User.create(name: 'Dummy Person', email: 'dummy@person.com')
-test_user = User.create(name: 'Test User', email: 'test@user.com')
+joey = User.create(name: 'Joey F. Poon', email: 'poonjf@gmail.com', password: 'password', password_confirmation: 'password')
+dummy_person = User.create(name: 'Dummy Person', email: 'dummy@person.com', password: 'cheesecake', password_confirmation: 'cheesecake')
+test_user = User.create(name: 'Test User', email: 'test@user.com', password: 'bunnies', password_confirmation: 'bunnies')
 
 Post.create(title: 'Some post', content: 'Bacon ipsum dolor amet jowl bacon meatball swine tenderloin, ham pig. Pork chop prosciutto doner jerky corned beef pig alcatra brisket picanha turducken meatball strip steak. Pork loin andouille tail, shoulder fatback spare ribs turducken chicken tenderloin alcatra landjaeger. Turducken ground round filet mignon pork chop, landjaeger venison ball tip meatball cow tail ham hock. Pork belly ham hock tri-tip, spare ribs meatball pork chop strip steak salami swine ball tip frankfurter sirloin shoulder. Turkey shank fatback, frankfurter picanha beef salami andouille meatball short loin swine.', votes: 6, user_id: joey.id)
 

@@ -7,6 +7,8 @@ gem 'rails', '4.2.1'
 gem 'pg'
 # Use SCSS for stylesheets
 
+gem 'bcrypt'
+
 gem 'bootstrap-sass'
 
 gem 'sass-rails', '~> 5.0'
