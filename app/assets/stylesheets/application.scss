@@ -9,5 +9,15 @@
 }
 
 .alert {
-  color: red;
+  background: #C0392B;
+  border: 1px solid darken(#C0392B, 20%);
+  padding: 1em;
+  color: #ECF0F1;
+}
+
+.notice {
+  background: #27AE60;
+  border: 1px solid darken(#27AE60, 20%);
+  padding: 1em;
+  color: #ECF0F1;
 }

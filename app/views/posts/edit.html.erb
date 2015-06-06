@@ -22,6 +22,8 @@
       <%= f.text_area :content, placeholder: 'Content', class: "form-control form-group" %>
       <%= f.submit 'Update', :class => 'btn btn-success form-control', method: 'patch' %>
 
+      <%= link_to 'Delete', @post, class: 'remove btn btn-danger form-control', data: {confirm: 'Are you sure you want to delete this post?'}, method: 'delete', style: 'margin-top: .6em;' %>
+
     <% end %>
 
   </div>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get '/posts/:id/:title' => 'posts#show', as: :post
 
-  patch '/posts/:id/:title' => 'posts#update', as: :update_post
+  patch '/posts/:id/:title' => 'posts#update'
 
   post 'posts/:id/up-vote' => 'posts#up_vote', as: :up_vote
 
@@ -26,9 +26,13 @@ Rails.application.routes.draw do
 
   get '/users/:id' => 'users#show', as: :user
 
+  get '/users/:id/edit' => 'users#edit', as: :edit_user
+
+  patch '/users/:id' => 'users#update'
+
   post '/users' => 'users#create'
 
-  delete '/users/:id' => 'users#delete'
+  delete '/users/:id' => 'users#delete', as: :delete_user
 
   ###Sessions
 

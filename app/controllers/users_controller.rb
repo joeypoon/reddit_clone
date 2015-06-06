@@ -8,15 +8,32 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
+
+    if @user && @user.authenticate(user_params[:password])
+      @user.update_attributes user_params
+      redirect_to edit_user_path(current_user), notice: 'Account updated successfully'
+    else
+      redirect_to edit_user_path(current_user), alert: 'Incorrect password'
+    end
   end
 
   def delete
+    current_user.posts.destroy_all
+    current_user.destroy
+    session[:user_id] = nil
+    redirect_to root_path, notice: 'Account successfully deleted.'
+  end
+
+  def edit
+    @user = current_user
   end
 
   def create
-    @user = User.new user_params
-    if @user.save
-      redirect_to @user
+    user = User.new user_params
+    if user.save
+      login user
+      redirect_to root_path
     else
       render :new
     end
@@ -24,9 +41,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-  end
-
-  def exit
   end
 
   private
