@@ -8,7 +8,7 @@
 
 joey = User.create(name: 'Joey F. Poon', email: 'poonjf@gmail.com', password: 'password', password_confirmation: 'password')
 dummy_person = User.create(name: 'Dummy Person', email: 'dummy@person.com', password: 'cheesecake', password_confirmation: 'cheesecake')
-test_user = User.create(name: 'Test User', email: 'test@user.com', password: 'bunnies', password_confirmation: 'bunnies')
+test_user = User.create(name: 'Test User', email: 'test@user.com', password: 'bunniess', password_confirmation: 'bunniess')
 
 Post.create(title: 'My Site!', content: 'http://joeypoon.com', votes: 6, user_id: joey.id)
 
@@ -19,3 +19,10 @@ Post.create(title: 'Yet another post', content: 'http://cheezburger.com/85046059
 Post.create(title: 'Yet another post', content: 'http://cheezburger.com/8460247296', votes: -4, user_id: joey.id)
 
 Post.create(title: 'More Posts!', content: 'http://cheezburger.com/7374342144', votes: 3, user_id: dummy_person.id)
+
+Comment.create(content: 'Whoa this is a comment', user_id: joey.id, post_id: 1)
+Comment.create(content: 'Whoa this is a comment', user_id: test_user.id, post_id: 1)
+Comment.create(content: 'Whoa this is a comment', user_id: dummy_person.id, post_id: 2)
+Comment.create(content: 'Whoa this is a comment', user_id: joey.id, post_id: 2)
+Comment.create(content: 'Whoa this is a comment', user_id: dummy_person.id, post_id: 3)
+Comment.create(content: 'Whoa this is a comment', user_id: test_user.id, post_id: 3)

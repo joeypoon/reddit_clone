@@ -6,14 +6,12 @@ class PostsController < ApplicationController
   def show
     @post = Post.find params[:id]
     @user = @post.user
-    @post.votes += 1
-    @post.save
-    redirect_to @post.content
+    @comments = @post.comments
   end
 
   def create
     @post = Post.new post_params
-    @post.user = User.find session[:user_id]
+    @post.user = current_user
 
     if @post.save
       redirect_to post_path(id: @post.id, title: @post.title)

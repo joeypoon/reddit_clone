@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   ### Comments
 
-  get 'comments/new' => 'comments#new', as: :new_comment
+  get 'comments/:post_id/new' => 'comments#new', as: :new_comment
+
+  post 'comments/:post_id' => 'comments#create', as: :create_comment
 
   patch 'comments' => 'comments#edit'
 
