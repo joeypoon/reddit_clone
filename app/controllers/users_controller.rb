@@ -8,13 +8,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-
-    if @user && @user.authenticate(user_params[:password])
-      @user.update_attributes user_params
-      redirect_to edit_user_path(current_user), notice: 'Account updated successfully'
+    user = current_user
+    if user && user.authenticate(user_params[:password])
+      user.update_attributes user_params
+      redirect_to edit_user_path(user), notice: 'Account updated successfully'
     else
-      redirect_to edit_user_path(current_user), alert: 'Incorrect password'
+      redirect_to edit_user_path(user), alert: 'Incorrect password'
     end
   end
 

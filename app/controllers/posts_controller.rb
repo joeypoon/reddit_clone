@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   def new
     @post = Post.new
   end
@@ -23,15 +24,13 @@ class PostsController < ApplicationController
   end
 
   def delete
-    @post = Post.find params[:id]
+    @post = current_user.posts.find(params[:id])
     @post.destroy
-
-    @posts = Post.all
     redirect_to root_path
   end
 
   def update
-    @post = Post.find params[:id]
+    @post = current_user.posts.find(params[:id])
     @post.title = post_params[:title]
     @post.content = post_params[:content]
     if @post.save
@@ -42,7 +41,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find params[:id]
+    @post = current_user.posts.find(params[:id])
   end
 
   def index
