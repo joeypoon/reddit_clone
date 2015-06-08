@@ -6,6 +6,9 @@ class PostsController < ApplicationController
   def show
     @post = Post.find params[:id]
     @user = @post.user
+    @post.votes += 1
+    @post.save
+    redirect_to @post.content
   end
 
   def create

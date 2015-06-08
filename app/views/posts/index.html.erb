@@ -13,7 +13,7 @@
     <% end %>
   </div>
 
-  <p><span class="post-titles"><%= link_to post.title, post.content, target: '_blank' %></span>
+  <p><span class="post-titles"><%= link_to post.title, post %></span>
 
   <% if session[:user_id] == post.user.id %>
 
