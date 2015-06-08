@@ -6,6 +6,5 @@ class Post < ActiveRecord::Base
   validates :content, presence: true,
                         format: { with: /https?:\/\/[\S]+/ },
                         uniqueness: true
-  validates :user, presence: true
-
+                        
 end
