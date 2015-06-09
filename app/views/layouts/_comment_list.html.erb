@@ -1,0 +1,26 @@
+<% @comments.sort_by(&:votes).reverse.each do |comment| %>
+
+  <div class="panel panel-default">
+
+    <div class="panel-body">
+
+    <p><div class="up-down-arrow">
+      <%= link_to(comment_up_vote_path(id: comment.id), class: 'up-arrow', method: 'post') do %>
+        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+      <% end %>
+
+      <%= comment.votes %>
+
+      <%= link_to(comment_down_vote_path(id: comment.id), class: 'down-arrow', method: 'post') do %>
+        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+      <% end %>
+    </div>
+
+
+    <%= comment.content %><br><%= link_to "#{comment.user.name}", user_path(id: comment.user.id) %></p>
+
+    </div>
+
+  </div>
+
+<% end %>

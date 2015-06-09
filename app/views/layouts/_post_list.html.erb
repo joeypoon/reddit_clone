@@ -1,0 +1,38 @@
+<% @posts.sort_by(&:votes).reverse.each do |post| %>
+
+  <div class="panel panel-default">
+
+    <div class="panel-body">
+
+      <div class="up-down-arrow">
+        <%= link_to(up_vote_path(id: post.id), class: 'up-arrow', method: 'post') do %>
+          <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+        <% end %>
+
+        <%= post.votes %>
+
+        <%= link_to(down_vote_path(id: post.id), class: 'down-arrow', method: 'post') do %>
+          <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+        <% end %>
+      </div>
+
+      <p><span class="post-titles"><%= link_to post.title, link_out_path(id: post.id) %> </span>
+
+      - <%= link_to "#{post.comments.count} Comments", post %>
+
+      <% if session[:user_id] == post.user.id %>
+
+        - <%= link_to 'Edit', edit_post_path(id: post.id) %>
+        <%= link_to(post, class: 'remove', data: { confirm: 'Are you sure you want to delete this post?' }, method: 'delete') do %>
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        <% end %>
+
+      <% end %></p>
+
+      <p>By <%= link_to post.user.name, user_path(id: post.user.id) %> <%= distance_of_time_in_words_to_now post.created_at %></p>
+
+    </div>
+
+  </div>
+
+<% end %>

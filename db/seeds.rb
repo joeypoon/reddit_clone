@@ -14,7 +14,7 @@ Post.create(title: 'My Site!', content: 'http://joeypoon.com', votes: 6, user_id
 
 Post.create(title: 'Some other post', content: 'http://cheezburger.com/8450623488', votes: 7, user_id: dummy_person.id)
 
-Post.create(title: 'Yet some another post', content: 'http://cheezburger.com/8504605952', votes: 0, user_id: test_user.id)
+Post.create(title: 'Yet some other post', content: 'http://cheezburger.com/8504605952', votes: 0, user_id: test_user.id)
 
 Post.create(title: 'Yet another post', content: 'http://cheezburger.com/8460247296', votes: -4, user_id: joey.id)
 
