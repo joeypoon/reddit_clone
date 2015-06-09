@@ -64,6 +64,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def link_out
+    @post = Post.find params[:id]
+    @post.votes += 1
+    if @post.save
+      redirect_to @post.content
+    end
+  end
+
   private
 
     def post_params

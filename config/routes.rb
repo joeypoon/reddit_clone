@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   get '/posts/:id/:title' => 'posts#show', as: :post
 
+  get 'posts/:id' => 'posts#link_out', as: :link_out
+
   patch '/posts/:id/:title' => 'posts#update'
 
   post 'posts/:id/up-vote' => 'posts#up_vote', as: :up_vote
