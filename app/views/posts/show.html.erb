@@ -25,6 +25,11 @@
 <% end %>
 
 <hr>
-<p><%= link_to 'New Comment', new_comment_path(post_id: @post.id) %></p>
+
+<% unless session[:user_id].nil? %>
+
+  <p><%= link_to 'New Comment', new_comment_path(post_id: @post.id) %></p>
+
+<% end %>
 
 <%= render 'layouts/comment_list' %>

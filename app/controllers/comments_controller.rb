@@ -1,7 +1,11 @@
 class CommentsController < ApplicationController
 
   def new
-    @comment = Comment.new
+    unless current_user == nil
+      @comment = Comment.new
+    else
+      redirect_to root_path, alert: 'Please login to post comments.'
+    end
   end
 
   def create
