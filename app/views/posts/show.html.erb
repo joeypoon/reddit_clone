@@ -1,4 +1,4 @@
-<div class="up-down-arrow">
+<div><div class="up-down-arrow">
   <%= link_to(up_vote_path(id: @post.id), class: 'up-arrow', method: 'post') do %>
     <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
   <% end %>
@@ -10,7 +10,7 @@
   <% end %>
 </div>
 
-<h1><%= link_to @post.title, @post.content %></h1>
+<h1><%= link_to @post.title, @post.content %></h1></div>
 <%= link_to @user.name, user_path(id: @user.id) %>
 
 <% if session[:user_id] == @post.user.id %>
@@ -23,12 +23,22 @@
 <% end %>
 
 <hr>
-<%= link_to 'New Comment', new_comment_path(post_id: @post.id) %>
+<p><%= link_to 'New Comment', new_comment_path(post_id: @post.id) %></p>
 
-<ul>
-  <% @comments.each do |comment| %>
+<% @comments.sort_by(&:votes).reverse.each do |comment| %>
 
-    <li><%= comment.content %><br><%= link_to "#{comment.user.name}", user_path(id: comment.user.id) %></li>
+  <p><div class="up-down-arrow">
+    <%= link_to(comment_up_vote_path(id: comment.id), class: 'up-arrow', method: 'post') do %>
+      <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+    <% end %>
 
-  <% end %>
-</ul>
+    <%= comment.votes %>
+
+    <%= link_to(comment_down_vote_path(id: comment.id), class: 'down-arrow', method: 'post') do %>
+      <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+    <% end %>
+  </div>
+
+  <%= comment.content %><br><%= link_to "#{comment.user.name}", user_path(id: comment.user.id) %></p>
+
+<% end %>

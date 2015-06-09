@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   delete 'comments/:id' => 'comments#delete'
 
+  post 'comments/:id/up_vote' => 'comments#up_vote', as: :comment_up_vote
+
+  post 'comments/:id/down_vote' => 'comments#down_vote', as: :comment_down_vote
+
   ### Posts
 
   get '/posts/new' => 'posts#new', as: :new_post

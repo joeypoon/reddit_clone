@@ -20,9 +20,9 @@ Post.create(title: 'Yet another post', content: 'http://cheezburger.com/84602472
 
 Post.create(title: 'More Posts!', content: 'http://cheezburger.com/7374342144', votes: 3, user_id: dummy_person.id)
 
-Comment.create(content: 'Whoa this is a comment', user_id: joey.id, post_id: 1)
-Comment.create(content: 'Whoa this is a comment', user_id: test_user.id, post_id: 1)
-Comment.create(content: 'Whoa this is a comment', user_id: dummy_person.id, post_id: 2)
-Comment.create(content: 'Whoa this is a comment', user_id: joey.id, post_id: 2)
-Comment.create(content: 'Whoa this is a comment', user_id: dummy_person.id, post_id: 3)
-Comment.create(content: 'Whoa this is a comment', user_id: test_user.id, post_id: 3)
+Comment.create(content: 'Whoa this is a comment', user_id: joey.id, post_id: 1, votes: 3)
+Comment.create(content: 'Whoa this is a comment', user_id: test_user.id, post_id: 1, votes: 14)
+Comment.create(content: 'Whoa this is a comment', user_id: dummy_person.id, post_id: 2, votes: 7)
+Comment.create(content: 'Whoa this is a comment', user_id: joey.id, post_id: 2, votes: 0)
+Comment.create(content: 'Whoa this is a comment', user_id: dummy_person.id, post_id: 3, votes: -1)
+Comment.create(content: 'Whoa this is a comment', user_id: test_user.id, post_id: 3, votes: 5)

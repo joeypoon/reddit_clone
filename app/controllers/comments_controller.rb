@@ -26,6 +26,22 @@ class CommentsController < ApplicationController
     comment.destroy
   end
 
+  def up_vote
+    @comment = Comment.find params[:id]
+    @comment.votes += 1
+    if @comment.save
+      redirect_to post_path(id: @comment.post.id, title: @comment.post.title.parameterize)
+    end
+  end
+
+  def down_vote
+    @comment = Comment.find params[:id]
+    @comment.votes -= 1
+    if @comment.save
+      redirect_to post_path(id: @comment.post.id, title: @comment.post.title.parameterize)
+    end
+  end
+
   private
 
     def comment_params
