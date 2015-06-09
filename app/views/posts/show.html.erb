@@ -10,7 +10,9 @@
   <% end %>
 </div>
 
-<h1><%= link_to @post.title, @post.content %></h1></div>
+<h1><%= link_to @post.title, link_out_path(id: @post.id) %></h1></div>
+
+
 <%= link_to @user.name, user_path(id: @user.id) %>
 
 <% if session[:user_id] == @post.user.id %>
