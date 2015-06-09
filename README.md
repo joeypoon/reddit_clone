@@ -1,5 +1,6 @@
 ### Clone of Reddit
-* Ranks links by votes
+* Ranking by votes
 * Link editing
-* Login/logout
+* User login
 * Profile editing
+* Comments
