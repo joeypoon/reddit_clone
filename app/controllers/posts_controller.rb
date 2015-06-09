@@ -1,7 +1,15 @@
 class PostsController < ApplicationController
 
+  before_action do
+    @posts = Post.all.order('votes desc').page(params[:page])
+  end
+
   def new
-    @post = Post.new
+    unless current_user == nil
+      @post = Post.new
+    else
+      redirect_to root_path, alert: 'Please login first.'
+    end
   end
 
   def show
@@ -43,7 +51,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    # @posts = Post.all
   end
 
   def up_vote
